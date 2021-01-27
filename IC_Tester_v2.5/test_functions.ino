@@ -108,7 +108,7 @@ void autoSearch(int pins)
 {
   // Auto Search Functions. Checks for matching 
   // IC definitions with the right pin count.
-  SD.begin();
+  SD.begin(chipSelect);
   File dataFile = SD.open(fname);
 
   String newCase;
@@ -224,7 +224,7 @@ void autoSearch(int pins)
     // Error while reading IC data
     Serial.print("error opening "); Serial.println(fname);
     dataFile.close();
-    SD.begin();
+    SD.begin(chipSelect);
     drawStatus("SD Card Error",RED);
     getTouch();
     resetFunc();
@@ -235,7 +235,7 @@ void manualSearch(String number)
 {
   // Manual Search function
   // takes given IC number and checks for match
-  SD.begin();
+  SD.begin(chipSelect);
   File dataFile = SD.open(fname);
 
   String buffer;
@@ -343,7 +343,7 @@ void manualSearch(String number)
     // Error reading in IC data from SD
     Serial.print("error opening "); Serial.println(fname);
     dataFile.close();
-    SD.begin();
+    SD.begin(chipSelect);
 
     digitalWrite(ledr,HIGH);
     digitalWrite(ledg,LOW);

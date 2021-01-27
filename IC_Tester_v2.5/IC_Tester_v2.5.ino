@@ -99,7 +99,7 @@ void SD_init()
   // Initialize SD Card Hardware
   pinMode(chipSelect, OUTPUT);
 
-  if (!SD.begin()) {
+  if (!SD.begin(chipSelect)) {
     Serial.println("Card failed, or not present");
     return;
   }
